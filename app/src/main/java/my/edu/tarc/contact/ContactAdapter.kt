@@ -8,9 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import my.edu.tarc.contact.model.Contact
 
 
-class ContactAdapter(private val contactList: List<Contact>):
+class ContactAdapter(private var contactList: List<Contact>):
 
     RecyclerView.Adapter<ContactAdapter.ViewHolder>(){
+//
+    private var dataset = emptyList<Contact>()
+
+    internal fun setContact(contact:List<Contact>){
+        contactList = contact
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(view : View): RecyclerView.ViewHolder(view){
         //A view object hosting each record

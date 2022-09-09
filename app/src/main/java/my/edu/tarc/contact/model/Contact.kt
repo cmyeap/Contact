@@ -1,7 +1,12 @@
 package my.edu.tarc.contact.model
 
-class Contact (
-    val name: String, val phone: String)
+import  androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+data class Contact (
+    val name: String,
+    @PrimaryKey val phone: String)
 {
 
 }

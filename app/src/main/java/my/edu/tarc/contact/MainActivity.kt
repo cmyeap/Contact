@@ -10,13 +10,18 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import my.edu.tarc.contact.databinding.ActivityMainBinding
 import my.edu.tarc.contact.model.Contact
+import my.edu.tarc.contact.viewModel.ContactViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    //todo3
+    private  lateinit var  contactViewModel: ContactViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //TODO3
+        contactViewModel = ViewModelProvider(this).get(contactViewModel::class.java)
 
         setSupportActionBar(binding.toolbar)
 
@@ -66,9 +74,6 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
-    }
-    companion object{
-        val contactList = ArrayList<Contact>()
     }
 
     override fun onDestroy() {
